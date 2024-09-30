@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <div id="app">
+   <img v-bind:src="imgSrc" alt="">
+   <div :style="fontColor">Make me red</div>
+   <!-- <div :style="Backg" :id="myColor">Make me white</div> -->
+    <div v-bind="fontObj">Make me white</div>
+ </div>
+
+ <script type="module">
+    import {createApp, ref} from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    createApp({
+        setup() {
+           const imgSrc = ref("./images/pic_1.jpg")
+           const fontColor = ref("color:red")
+        //    const Backg = ref("background-color:black;color:white")
+        const fontObj = ref({
+            id :'myColor',
+            style:'background-color:black;color:white'
+        })
+            return {
+          imgSrc,fontColor,Backg,fontObj
+                
+            }
+        }
+    }).mount("#app")
+ </script>
+</body>
+</html>

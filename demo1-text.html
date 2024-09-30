@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <div id="app">
+    <p>姓名：{{message}}</p>
+    <p v-once>性别：{{username}}</p>
+    <p>学校：<span  v-text="msg"></span></p>
+    <p>专业：<span v-html="rawHtml" 
+        style = "background-color:blue"></span></p>
+ </div>
+ 
+
+ <script type="module">
+    import {createApp, ref} from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    createApp({
+        setup() {
+            const message = ref('张三')
+            const username = ref("男")
+            const msg = ref("广东工程")
+            const rawHtml = ref('<span style="color:red">计算机应用技术<span>')
+            return {
+                message,
+                msg,
+                rawHtml,
+                username
+            }
+        }
+    }).mount("#app")
+ </script>
+</body>
+</html>

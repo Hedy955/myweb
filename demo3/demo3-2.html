@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <div>姓：{{xing}}</div>
+    <div>名：{{ming}}</div>
+    <div>全名：{{fullName}}</div>
+    <div>全名：{{fullName}}</div>
+    <div>全名：{{fullName}}</div>
+    <div>全名：method-{{getfullName()}}</div>
+    <div>全名：method-{{getfullName()}}</div>
+    <div>全名：method-{{getfullName()}}</div>
+    </div>
+
+    <script type="module">
+        import {createApp,ref,computed} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            setup() {
+                const xing = ref('黄')
+                const ming = ref('晓瑜')
+                const fullName = computed(() => {
+                    console.log('computed');
+                    
+                    return `${xing.value}${ming.value}`
+                })
+                const getfullName = () => {
+                    console.log('method');
+                    
+                    return `${xing.value}${ming.value}`
+                }
+                return{
+                   xing,ming,fullName,getfullName
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

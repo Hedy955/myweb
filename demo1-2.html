@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 也就是这个标签，能看懂吗 -->
+  <div id="app"> 
+    <!-- 按钮，点击之后执行increment方法 -->
+     <!-- 我点击按钮之后，执行的方法是什么，在哪里 -->
+      <!-- @click="xxxxxxxxx" 那你点击之后，执行的就是""里面的名字的方法，那就xxxxxxxxx，那么下面这句点击之后执行的方法是什么 -->
+       <!-- 括起来，是哪个区域的代码，选中一下 -->
+        <!-- 这里执行的是increment对吧 -->
+     <button @click="increment">执行increment方法</button>
+     <!-- 这里输出count这个变量的值 -->
+      <!-- 那我要点击按钮之后让count+1,那我应该怎么改动，你来操作试试吗？ -->
+      <div>{{count}}</div>
+  </div>
+  <script type="module">
+    //下面这句，是从后面的地址导入createApp和ref，createApp是用来初始化vue用的，ref是用来定义响应式变量(修改变量后会反馈到页面上)
+    import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    //这里就是初始化
+    createApp({
+      // createApp() 括号里面的内容，就是这个vue里面包含的一些参数
+      //setup 你可以理解为加载的时候会执行什么
+      setup() {
+        //这里是定义一个变量message,里面的内容就是ref()里面的内容，ref是用来定义响应式变量(修改变量后会反馈到页面上)
+        const message = ref('<span style = "color:red">hello vue!</span>')
+        //这里return，就是返回给页面，让这个页面能够识别找到这个变量，我注释掉之后，因为找不到这个变量，所以页面空白了
+        //注释掉之后，页面显示Property "message" was accessed during render but is not defined on instance. 
+        //也就是message未定义，因为我没让他返回给页面，return回去的话就可以了
+        //除了变量，那自然还有方法，所以，这里面也可以定义方法之类的
+        const count=ref(0)
+        //这是increment方法对吧
+        function increment(){ //那他执行的就是这个function的内容，也就是大括号里面的内容，那么现在的话，点击后会出现多少次“方法被执行”
+          console.log('方法被执行');
+          console.log('方法被执行');
+          console.log('方法被执行');
+          console.log('方法被执行');
+          console.log('方法被执行');
+          console.log('方法被执行');
+          
+        }
+        //一样的，定义的东西页面要使用也得return回去，所以count和increment也得返回回去
+        return {
+          message,
+          count,
+          increment
+        }
+      }
+    }).mount('#app') //这个mount('app') ,就是指挂在在id是app的标签上
+  </script>
+</body>
+
+</html>

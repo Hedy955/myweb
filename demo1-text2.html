@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <div id="app">
+    
+    <span v-html="rawHtml"></span>
+ </div>
+ 
+
+ <script type="module">
+    import {createApp, ref} from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    createApp({
+        setup() {
+            const rawHtml = ref("<b>各位同学，昨天市政水压不稳导致间歇性停水</b>，后勤部今天开始将进行用水调控，届时水压会调小，请大家错峰用水（高峰期晚8-10点，热水17-凌晨1点供应，倡议同学们提前洗漱）和节约用水，确保供应。 ")
+        
+            return {
+                rawHtml,
+                
+            }
+        }
+    }).mount("#app")
+ </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+   <template>
+    <div>单价：￥{{jiesuan.price}}</div>
+    <div>数量：<input type="text" v-model="jiesuan.num"></div>
+    <div>总价：<input type="text" v-model="jiesuan.total"></div>
+   
+    </div>
+</template>
+    <script setup>
+        import {watch,reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            setup() {
+                const jiesuan = reactive({
+                    price:18,
+                    num:0,
+                    total:0
+                })
+                watch(jiesuan.num, (newVal,oldVal) => {
+                    console.log('新值：',newVal)
+                    console.log('旧值：',oldVal)
+                    jiesuan.total = jiesuan.price * jiesuan.num
+                }, { immediate:true })
+                return{
+                   jiesuan
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
